@@ -1,8 +1,11 @@
 import React from 'react'
+import NavBar from "./components/NavBar.jsx";
 
 const App = () => {
     return (
-        <h1 className="text-green-400">Hello apple macbook pro</h1>
+       <main>
+           <NavBar/>
+       </main>
 
     )
 }
