@@ -2,17 +2,10 @@ import React from "react";
 import useMacbookStore from "../store/index.js";
 import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
-import {
-  Box,
-  OrbitControls,
-} from "@react-three/drei";
+import { Box, OrbitControls } from "@react-three/drei";
+import MacbookModel14 from "./models/Macbook-14.jsx";
 const ProductViewer = () => {
-  const {
-    color,
-    scale,
-    setColor,
-    setScale,
-  } = useMacbookStore();
+  const { color, scale, setColor, setScale } = useMacbookStore();
   return (
     <section id="product-viewer">
       <h2>Take a closer look.</h2>
@@ -24,31 +17,23 @@ const ProductViewer = () => {
         <div className="flex-center gap-5 mt-5">
           <div className="color-control">
             <div
-              onClick={() =>
-                setColor("#adb5bd")
-              }
+              onClick={() => setColor("#adb5bd")}
               className={clsx(
                 "bg-neutral-300",
-                color === "#adb5bd" &&
-                  "active",
+                color === "#adb5bd" && "active",
               )}
             />
             <div
-              onClick={() =>
-                setColor("#2e2e2c")
-              }
+              onClick={() => setColor("#2e2e2c")}
               className={clsx(
                 "bg-neutral-900",
-                color === "#2e2e2c" &&
-                  "active",
+                color === "#2e2e2c" && "active",
               )}
             />
           </div>
           <div className="size-control ">
             <div
-              onClick={() =>
-                setScale(0.06)
-              }
+              onClick={() => setScale(0.06)}
               className={clsx(
                 scale === 0.06
                   ? "bg-white text-black"
@@ -59,9 +44,7 @@ const ProductViewer = () => {
             </div>
 
             <div
-              onClick={() =>
-                setScale(0.08)
-              }
+              onClick={() => setScale(0.08)}
               className={clsx(
                 scale === 0.08
                   ? "bg-white text-black"
@@ -83,14 +66,10 @@ const ProductViewer = () => {
           far: 100,
         }}
       >
-        <Box
-          position={[0, 0, 0]}
-          scale={10 * scale}
-          material-color={color}
-        />
-        <OrbitControls
-          enableZoom={false}
-        />
+        <ambientLight intensity={1} />
+
+        <MacbookModel14 scale={0.06} position={[0, 0, 0]} />
+        <OrbitControls enableZoom={false} />
       </Canvas>
     </section>
   );
